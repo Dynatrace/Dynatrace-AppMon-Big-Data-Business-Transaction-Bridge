@@ -11,22 +11,6 @@
 <link type="text/css" rel="stylesheet" href="css/print.css" media="print"/>
 </head>
 <body>
-<div class="container" style="min-width: 760px;">
-<div class="header block">
-<div class="header-left column span-6">
-</div>
-<div class="column span-18 header-right last">
-<h4>Big Data Business Transaction Bridge</h4>
-</div>
-</div>
-<div class="block">
-<div class="toc column span-6 prepend-top">
-<h3>Table of Contents
-</h3>
-<ul class="toc">
-</ul>
-</div>
-<div id="103907934" class="content column span-18 last">
 <h1>Big Data Business Transaction Bridge</h1>
 <p>
 The Big Data Business Transaction Bridge makes it possible to store Business Transaction Results to HDFS, Files, Databases and other stores easily. The results are either written as CSV or JSON files and can be included in Hive as external tables. </p>
