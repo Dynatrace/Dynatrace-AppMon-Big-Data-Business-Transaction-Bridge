@@ -1,15 +1,3 @@
-<head>
-<title>Big Data Business Transaction Bridge</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
-<meta content="Scroll Wiki Publisher" name="generator"/>
-<link type="text/css" rel="stylesheet" href="css/blueprint/liquid.css" media="screen, projection"/>
-<link type="text/css" rel="stylesheet" href="css/blueprint/print.css" media="print"/>
-<!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"/><![endif]-->
-<link type="text/css" rel="stylesheet" href="css/content-style.css" media="screen, projection, print"/>
-<link type="text/css" rel="stylesheet" href="css/screen.css" media="screen, projection"/>
-<link type="text/css" rel="stylesheet" href="css/print.css" media="print"/>
-</head>
 <body>
 <h1>Big Data Business Transaction Bridge</h1>
 <p>
@@ -84,7 +72,7 @@ License </p>
 </td>
 <td rowspan="1" colspan="1">
 <p>
-<a href="attachments_5275722_2_dynaTraceBSD.txt">dynaTrace BSD</a> </p>
+<a href="dynaTraceBSD.txt">dynaTrace BSD</a> </p>
 </td>
 </tr>
 <tr>
@@ -104,7 +92,14 @@ Contents </p>
 </td>
 <td rowspan="1" colspan="1">
 <p>
-<a href="attachments_109608968_3_dtFlume094.jar">Big Data Business Transaction Bridge for Flume 0.9.4</a><br/><a href="attachments_109608967_3_dtFlume.jar">Big Data Business Transaction Bridge for Flume 1.3.1</a><br/><a href="attachments_109608969_1_protobuf-2.4.1.jar">Google protobuf 2.4.1</a><br/><a href="attachments_122978307_1_runFlume.bat">Windows Flume Start Script<br/></a><a href="attachments_130220061_2_runFlume.sh">Linux Shell Flume Script</a><br/><a href="attachments_120913928_1_SampleFileSetup-conf.properties">Flume CSV File Configuration</a><br/><a href="attachments_130220062_1_flume-json-conf.properties">Flume JSON File Configuration</a><br/><a href="attachments_120913927_1_SampleHDFSSetup-conf.properties">Flume HDFS Configuration</a> </p>
+<a href="dtFlume094.jar">Big Data Business Transaction Bridge for Flume 0.9.4</a><br/>
+<a href="dtFlume.jar">Big Data Business Transaction Bridge for Flume 1.3.1</a><br/>
+<a href="protobuf-2.4.1.jar">Google protobuf 2.4.1</a><br/>
+<a href="runFlume.bat">Windows Flume Start Script<br/></a>
+<a href="runFlume.sh">Linux Shell Flume Script</a><br/>
+<a href="SampleFileSetup-conf.properties">Flume CSV File Configuration</a><br/>
+<a href="flume-json-conf.properties">Flume JSON File Configuration</a><br/>
+<a href="SampleHDFSSetup-conf.properties">Flume HDFS Configuration</a> </p>
 </td>
 </tr>
 </tbody> </table>
@@ -161,11 +156,11 @@ $FLUME_HOME/bin/flume-ng agent -C dtFlume.jar -n agent1 -c $FLUME_HOME/conf \
 </div>
 </div>
 <p>
-You can also just download the attached <a href="attachments_130220061_2_runFlume.sh">runFlume.sh</a> which will also attempt to create the data directories found in the flume configuration. For Windows it will look a little different, you can use the attached <a href="attachments_122978307_1_runFlume.bat">runFlume.bat</a> as a starting point. </p>
+You can also just download the attached <a href="runFlume.sh">runFlume.sh</a> which will also attempt to create the data directories found in the flume configuration. For Windows it will look a little different, you can use the attached <a href="runFlume.bat">runFlume.bat</a> as a starting point. </p>
 <p>
 This will start flume as an agent, add the <i class=" ">dtFlume.jar</i> to the classpath, execute the <i class=" ">agent1</i> as defined in the given <i class=" ">flume-conf.properties</i> configuration file </p>
 <p>
-An example config, which connects a Http Source three File Sinks writing to individual directories looks as follows (also see <a href="attachments_120913928_1_SampleFileSetup-conf.properties">sample attachment</a>): </p>
+An example config, which connects a Http Source three File Sinks writing to individual directories looks as follows (also see <a href="SampleFileSetup-conf.properties">sample attachment</a>): </p>
 <div class="confbox programlisting">
 <div class="content">
 <pre><code># Name the components on this agent
@@ -316,7 +311,7 @@ $HADOOP_HOME/bin/hadoop fs -chmod g+w /user/bts/visit</code></pre>
 <p>
 Adjust the directory names according to your needs. </p>
 <p>
-In order to let flume write to Hadoop you will need to modify the flume configuration to use the HDFS sink instead of the file sink (also see <a href="attachments_120913927_1_SampleHDFSSetup-conf.properties">sample attachment</a>). </p>
+In order to let flume write to Hadoop you will need to modify the flume configuration to use the HDFS sink instead of the file sink (also see <a href="SampleHDFSSetup-conf.properties">sample attachment</a>). </p>
 <div class="confbox programlisting">
 <div class="content">
 <pre><code># Name the components on this agent
@@ -449,7 +444,7 @@ LOCATION '/user/bts/visit';</code></pre>
 </div>
 </div>
 <p>
-You can also run the command below using this file : <a href="attachments_118226989_1_bigdatabtbridge_table_creation.sql">bigdatabtbridge_table_creation.sql</a> </p>
+You can also run the command below using this file : <a href="bigdatabtbridge_table_creation.sql">bigdatabtbridge_table_creation.sql</a> </p>
 <div class="confbox programlisting">
 <div class="content">
 <pre><code>hive --service cli -f bigdatabtbridge_table_creation.sql</code></pre>
