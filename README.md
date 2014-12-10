@@ -29,7 +29,7 @@ Transactions Feed](https://community/display/DOCDT55/Real+Time+Business+Transact
 
   * [Prerequisites](#prerequisites)
 
-  * [Flume File based Setup with Flume 1.3.1](#flume_File_based_Setup_with_Flume_1.3.1)
+  * [Flume File based Setup with Flume 1.3.1](#flume-file-based-setup-with-flume-1.3.1)
 
     * [Alternative Setup - JSON instead of CSV](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-AlternativeSetup-JSONinsteadofCSV)
 
