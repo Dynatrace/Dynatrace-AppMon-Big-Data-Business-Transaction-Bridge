@@ -31,19 +31,19 @@ Transactions Feed](https://community/display/DOCDT55/Real+Time+Business+Transact
 
   * [Flume File based Setup with Flume 1.3.1](#flume-file-based-setup-with-flume-1.3.1)
 
-    * [Alternative Setup - JSON instead of CSV](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-AlternativeSetup-JSONinsteadofCSV)
+    * [Alternative Setup](#alternative-setup)
 
-  * [Hadoop Flume Setup](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-HadoopFlumeSetup)
+  * [Hadoop Flume Setup](#hadoop_flume_setup)
 
   * [Hive Setup](#hive-setup)
 
-    * [Query data via Hive](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-QuerydataviaHive)
+    * [Query data via Hive](#query_data_via_hive)
 
-      * [Try Hive Locally](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-TryHiveLocally)
+      * [Try Hive Locally](#try_hive_locally)
 
-  * [Appendix](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-Appendix)
+  * [Appendix](#appendix)
 
-    * [Flume 0.9.4](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-Flume0.9.4)
+    * [Flume 0.9.4](#flume_0.9.4)
 
 ## Prerequisites
 
@@ -165,7 +165,7 @@ The Serializers also have two parameters that can be used to configure alternati
     #CSV Array field delimiter
     agent1.sinks.VisitSink.sink.serializer.collection-delimiter=;
 
-### Alternative Setup - JSON instead of CSV
+### Alternative Setup
 
 You can also export Business Transaction data to JSON instead of CSV
 
