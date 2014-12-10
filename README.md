@@ -27,7 +27,7 @@ Transactions Feed](https://community/display/DOCDT55/Real+Time+Business+Transact
 ||[Flume JSON File Configuration](flume-json-conf.properties)  
 ||[Flume HDFS Configuration](SampleHDFSSetup-conf.properties)
 
-  * [Prerequisites](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-Prerequisites)
+  * [Prerequisites](#prerequisites)
 
   * [Flume File based Setup with Flume 1.3.1](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-FlumeFilebasedSetupwithFlume1.3.1)
 
