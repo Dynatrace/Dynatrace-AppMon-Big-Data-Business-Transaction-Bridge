@@ -35,7 +35,7 @@ Transactions Feed](https://community/display/DOCDT55/Real+Time+Business+Transact
 
   * [Hadoop Flume Setup](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-HadoopFlumeSetup)
 
-  * [Hive Setup](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-HiveSetup)
+  * [Hive Setup](#hive-setup)
 
     * [Query data via Hive](Big_Data_Business_Transaction_Bridge.html#103907934_BigDataBusinessTransactionBridge-QuerydataviaHive)
 
