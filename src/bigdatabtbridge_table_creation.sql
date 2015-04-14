@@ -18,7 +18,6 @@ create external table BT_PP (
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' ESCAPED BY '\\' COLLECTION ITEMS TERMINATED BY ',' MAP KEYS TERMINATED BY '='
 LOCATION '/user/bts/pp';
 
-
 create external table BT_PA (
     Name STRING,
     Application STRING,
@@ -36,11 +35,21 @@ create external table BT_PA (
     ExecTime DOUBLE,
     SuspensionTime DOUBLE,
     SyncTime DOUBLE,
-    WaitTime DOUBLE
+    WaitTime DOUBLE,
+    ClientErrors INT,
+    ClientTime DOUBLE,
+    NetworkTime DOUBLE,
+    ServerTime DOUBLE,
+    UrlRedirectionTime DOUBLE,
+    DnsTime INT,
+    ConnectTime INT, 
+    SslTime INT,
+    DocumentRequestTime INT,
+    DocumentResponseTime INT,
+    ProcessingTime INT
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' ESCAPED BY '\\' COLLECTION ITEMS TERMINATED BY ',' MAP KEYS TERMINATED BY '='
 LOCATION '/user/bts/pa';
-
 
 create external table BT_VISIT (
     Name STRING,
@@ -52,7 +61,21 @@ create external table BT_VISIT (
     Values MAP<STRING, DOUBLE>,
     User STRING,
     Converted BOOLEAN,
-    Apdex DOUBLE
+    Apdex DOUBLE,
+    NrOfActions INT,
+    ClientFamily STRING,
+    ClientIP STRING,
+    Continent STRING,
+    Country STRING,
+    City STRING,
+    FailedActions INT,
+    ClientErrors INT,
+    ExitActionFailed BOOLEAN,
+    Bounce BOOLEAN,
+    OsFamily STRING,
+    OsName STRING,
+    ConnectionType STRING,
+    ConvertedBy ARRAY<STRING>	
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' ESCAPED BY '\\' COLLECTION ITEMS TERMINATED BY ',' MAP KEYS TERMINATED BY '='
 LOCATION '/user/bts/visit';
