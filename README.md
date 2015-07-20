@@ -8,7 +8,7 @@ Transactions Feed](https://community.compuwareapm.com/community/display/DOCDT61/
 
 ![images_community/download/attachments/103907934/logo.png](images_community/download/attachments/103907934/logo.png)
 
-Find further information in the [dynaTrace community](https://community.compuwareapm.com/community/display/DL/Big+Data+Business+Transaction+Bridge)    
+Find further information in the [dynaTrace community](https://community.dynatrace.com/community/display/DL/Big+Data+Business+Transaction+Bridge)    
 
 
 
