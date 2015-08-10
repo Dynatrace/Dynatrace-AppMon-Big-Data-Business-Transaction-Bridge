@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="dynaTrace BT Export for Flume 1.3.1" default="build">
+<project name="dynaTrace BT Export for Flume 1.3.1/Protobuf 2.4.1" default="build">
 	
 	<description>
 		...
@@ -34,7 +34,7 @@
 	
 	<target name="build"  depends="init">
 		<delete dir="${dir.build}" />
-		<delete file="dtFlume.jar" />
+		<delete file="dtFlume_1.0.jar" />
 		<mkdir dir="${dir.build}" />
 	
 		<javac deprecation="no" nowarn="false" srcdir="${dir.src}" destdir="${dir.build}">
@@ -43,7 +43,7 @@
 			</classpath>
 		</javac>
 		
-		<jar jarfile="dtFlume.jar">
+		<jar jarfile="dtFlume_1.0.jar">
 			<fileset dir="${dir.build}">
 				<include name="**" />
 			</fileset>
@@ -52,7 +52,6 @@
 			</fileset>
 			<metainf dir="${dir.metainf}" includes="**/LICENSE" />
 		</jar>
-		<copyfile dest="C:/data/2vm/dtFlume.jar" src="dtFlume.jar" forceoverwrite="true" />
 	</target>
 	
 	

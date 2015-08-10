@@ -182,6 +182,6 @@ public class BtPageActionDecorator<S extends EventSink> extends BtDecorator<S> {
 	
 	@Override
 	Type getBtType() {
-		return BusinessTransaction.Type.USER_ACTION;
+		return BusinessTransaction.Type.PAGE_ACTION;
 	}
 }
