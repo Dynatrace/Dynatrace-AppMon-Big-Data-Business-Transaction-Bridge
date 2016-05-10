@@ -24,6 +24,10 @@ public final class BtExport {
     // optional int32 lostTransactions = 2;
     boolean hasLostTransactions();
     int getLostTransactions();
+    
+    // optional string serverName = 3;
+    boolean hasServerName();
+    String getServerName();
   }
   public static final class BusinessTransactions extends
       com.google.protobuf.GeneratedMessage
@@ -85,9 +89,42 @@ public final class BtExport {
       return lostTransactions_;
     }
     
+    // optional string serverName = 3;
+    public static final int SERVERNAME_FIELD_NUMBER = 3;
+    private java.lang.Object serverName_;
+    public boolean hasServerName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public String getServerName() {
+      java.lang.Object ref = serverName_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          serverName_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getServerNameBytes() {
+      java.lang.Object ref = serverName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        serverName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
     private void initFields() {
       businessTransactions_ = java.util.Collections.emptyList();
       lostTransactions_ = 0;
+      serverName_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -113,6 +150,9 @@ public final class BtExport {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(2, lostTransactions_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(3, getServerNameBytes());
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -129,6 +169,10 @@ public final class BtExport {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, lostTransactions_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getServerNameBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -263,6 +307,8 @@ public final class BtExport {
         }
         lostTransactions_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        serverName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       
@@ -314,6 +360,10 @@ public final class BtExport {
           to_bitField0_ |= 0x00000001;
         }
         result.lostTransactions_ = lostTransactions_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.serverName_ = serverName_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -358,6 +408,9 @@ public final class BtExport {
         }
         if (other.hasLostTransactions()) {
           setLostTransactions(other.getLostTransactions());
+        }
+        if (other.hasServerName()) {
+          setServerName(other.getServerName());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -405,6 +458,11 @@ public final class BtExport {
             case 16: {
               bitField0_ |= 0x00000002;
               lostTransactions_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              serverName_ = input.readBytes();
               break;
             }
           }
@@ -620,6 +678,42 @@ public final class BtExport {
         return this;
       }
       
+      // optional string serverName = 3;
+      private java.lang.Object serverName_ = "";
+      public boolean hasServerName() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public String getServerName() {
+        java.lang.Object ref = serverName_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          serverName_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setServerName(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        serverName_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearServerName() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        serverName_ = getDefaultInstance().getServerName();
+        onChanged();
+        return this;
+      }
+      void setServerName(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000004;
+        serverName_ = value;
+        onChanged();
+      }
+      
       // @@protoc_insertion_point(builder_scope:export.bt.BusinessTransactions)
     }
     
@@ -665,6 +759,10 @@ public final class BtExport {
         getOccurrencesOrBuilderList();
     com.dynatrace.diagnostics.core.realtime.export.BtExport.BtOccurrenceOrBuilder getOccurrencesOrBuilder(
         int index);
+    
+    // optional string systemProfile = 7;
+    boolean hasSystemProfile();
+    String getSystemProfile();
   }
   public static final class BusinessTransaction extends
       com.google.protobuf.GeneratedMessage
@@ -697,12 +795,12 @@ public final class BtExport {
     public enum Type
         implements com.google.protobuf.ProtocolMessageEnum {
       PUREPATH(0, 0),
-      PAGE_ACTION(1, 1),
+      USER_ACTION(1, 1),
       VISIT(2, 2),
       ;
       
       public static final int PUREPATH_VALUE = 0;
-      public static final int PAGE_ACTION_VALUE = 1;
+      public static final int USER_ACTION_VALUE = 1;
       public static final int VISIT_VALUE = 2;
       
       
@@ -711,7 +809,7 @@ public final class BtExport {
       public static Type valueOf(int value) {
         switch (value) {
           case 0: return PUREPATH;
-          case 1: return PAGE_ACTION;
+          case 1: return USER_ACTION;
           case 2: return VISIT;
           default: return null;
         }
@@ -743,7 +841,7 @@ public final class BtExport {
       }
       
       private static final Type[] VALUES = {
-        PUREPATH, PAGE_ACTION, VISIT, 
+        PUREPATH, USER_ACTION, VISIT, 
       };
       
       public static Type valueOf(
@@ -890,6 +988,38 @@ public final class BtExport {
       return occurrences_.get(index);
     }
     
+    // optional string systemProfile = 7;
+    public static final int SYSTEMPROFILE_FIELD_NUMBER = 7;
+    private java.lang.Object systemProfile_;
+    public boolean hasSystemProfile() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public String getSystemProfile() {
+      java.lang.Object ref = systemProfile_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          systemProfile_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getSystemProfileBytes() {
+      java.lang.Object ref = systemProfile_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        systemProfile_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
     private void initFields() {
       name_ = "";
       type_ = com.dynatrace.diagnostics.core.realtime.export.BtExport.BusinessTransaction.Type.PUREPATH;
@@ -897,6 +1027,7 @@ public final class BtExport {
       measureNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       dimensionNames_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       occurrences_ = java.util.Collections.emptyList();
+      systemProfile_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -937,6 +1068,9 @@ public final class BtExport {
       }
       for (int i = 0; i < occurrences_.size(); i++) {
         output.writeMessage(6, occurrences_.get(i));
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(7, getSystemProfileBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -980,6 +1114,10 @@ public final class BtExport {
       for (int i = 0; i < occurrences_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, occurrences_.get(i));
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(7, getSystemProfileBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1122,6 +1260,8 @@ public final class BtExport {
         } else {
           occurrencesBuilder_.clear();
         }
+        systemProfile_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
       
@@ -1193,6 +1333,10 @@ public final class BtExport {
         } else {
           result.occurrences_ = occurrencesBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.systemProfile_ = systemProfile_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1263,6 +1407,9 @@ public final class BtExport {
               occurrencesBuilder_.addAllMessages(other.occurrences_);
             }
           }
+        }
+        if (other.hasSystemProfile()) {
+          setSystemProfile(other.getSystemProfile());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1340,6 +1487,11 @@ public final class BtExport {
               com.dynatrace.diagnostics.core.realtime.export.BtExport.BtOccurrence.Builder subBuilder = com.dynatrace.diagnostics.core.realtime.export.BtExport.BtOccurrence.newBuilder();
               input.readMessage(subBuilder, extensionRegistry);
               addOccurrences(subBuilder.buildPartial());
+              break;
+            }
+            case 58: {
+              bitField0_ |= 0x00000040;
+              systemProfile_ = input.readBytes();
               break;
             }
           }
@@ -1740,6 +1892,42 @@ public final class BtExport {
           occurrences_ = null;
         }
         return occurrencesBuilder_;
+      }
+      
+      // optional string systemProfile = 7;
+      private java.lang.Object systemProfile_ = "";
+      public boolean hasSystemProfile() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      public String getSystemProfile() {
+        java.lang.Object ref = systemProfile_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          systemProfile_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setSystemProfile(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        systemProfile_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearSystemProfile() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        systemProfile_ = getDefaultInstance().getSystemProfile();
+        onChanged();
+        return this;
+      }
+      void setSystemProfile(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000040;
+        systemProfile_ = value;
+        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:export.bt.BusinessTransaction)
@@ -5217,40 +5405,41 @@ public final class BtExport {
   static {
     java.lang.String[] descriptorData = {
       "\nAsrc/com/dynatrace/diagnostics/core/rea" +
-      "ltime/export/BtExport.proto\022\texport.bt\"n" +
-      "\n\024BusinessTransactions\022<\n\024businessTransa" +
-      "ctions\030\001 \003(\0132\036.export.bt.BusinessTransac" +
-      "tion\022\030\n\020lostTransactions\030\002 \001(\005\"\371\001\n\023Busin" +
-      "essTransaction\022\014\n\004name\030\001 \002(\t\0221\n\004type\030\002 \001" +
-      "(\0162#.export.bt.BusinessTransaction.Type\022" +
-      "\023\n\013application\030\003 \001(\t\022\024\n\014measureNames\030\004 \003" +
-      "(\t\022\026\n\016dimensionNames\030\005 \003(\t\022,\n\013occurrence" +
-      "s\030\006 \003(\0132\027.export.bt.BtOccurrence\"0\n\004Type",
-      "\022\014\n\010PUREPATH\020\000\022\017\n\013PAGE_ACTION\020\001\022\t\n\005VISIT" +
-      "\020\002\"\352\006\n\014BtOccurrence\022\021\n\tstartTime\030\001 \002(\003\022\017" +
-      "\n\007endTime\030\002 \001(\003\022\022\n\npurePathId\030\005 \001(\t\022\016\n\006v" +
-      "alues\030\006 \003(\001\022\022\n\ndimensions\030\007 \003(\t\022\022\n\nactio" +
-      "nName\030\010 \001(\t\022\013\n\003url\030\t \001(\t\022\r\n\005query\030\n \001(\t\022" +
-      "\017\n\007visitId\030\013 \001(\003\022\014\n\004user\030\014 \001(\t\022\r\n\005apdex\030" +
-      "\r \001(\001\022\021\n\tconverted\030\016 \001(\010\022\024\n\014responseTime" +
-      "\030\017 \001(\001\022\017\n\007cpuTime\030\020 \001(\001\022\020\n\010syncTime\030\021 \001(" +
-      "\001\022\020\n\010waitTime\030\022 \001(\001\022\026\n\016suspensionTime\030\023 " +
-      "\001(\001\022\020\n\010execTime\030\024 \001(\001\022\020\n\010duration\030\025 \001(\001\022",
-      "\016\n\006failed\030\026 \001(\010\022\023\n\013nrOfActions\030\027 \001(\005\022\024\n\014" +
-      "clientFamily\030\030 \001(\t\022\020\n\010clientIP\030\031 \001(\t\022\021\n\t" +
-      "continent\030\032 \001(\t\022\017\n\007country\030\033 \001(\t\022\014\n\004city" +
-      "\030\034 \001(\t\022\025\n\rfailedActions\030\035 \001(\005\022\024\n\014clientE" +
-      "rrors\030\036 \001(\005\022\030\n\020exitActionFailed\030\037 \001(\010\022\016\n" +
-      "\006bounce\030  \001(\010\022\020\n\010osFamily\030! \001(\t\022\016\n\006osNam" +
-      "e\030\" \001(\t\022\026\n\016connectionType\030# \001(\t\022\023\n\013conve" +
-      "rtedBy\030$ \003(\t\022\022\n\nclientTime\030% \001(\001\022\023\n\013netw" +
-      "orkTime\030& \001(\001\022\022\n\nserverTime\030\' \001(\001\022\032\n\022url" +
-      "RedirectionTime\030( \001(\005\022\017\n\007dnsTime\030) \001(\005\022\023",
-      "\n\013connectTime\030* \001(\005\022\017\n\007sslTime\030+ \001(\005\022\033\n\023" +
-      "documentRequestTime\030, \001(\005\022\034\n\024documentRes" +
-      "ponseTime\030- \001(\005\022\026\n\016processingTime\030. \001(\005B" +
-      "2\n.com.dynatrace.diagnostics.core.realti" +
-      "me.exportH\001"
+      "ltime/export/BtExport.proto\022\texport.bt\"\202" +
+      "\001\n\024BusinessTransactions\022<\n\024businessTrans" +
+      "actions\030\001 \003(\0132\036.export.bt.BusinessTransa" +
+      "ction\022\030\n\020lostTransactions\030\002 \001(\005\022\022\n\nserve" +
+      "rName\030\003 \001(\t\"\220\002\n\023BusinessTransaction\022\014\n\004n" +
+      "ame\030\001 \002(\t\0221\n\004type\030\002 \001(\0162#.export.bt.Busi" +
+      "nessTransaction.Type\022\023\n\013application\030\003 \001(" +
+      "\t\022\024\n\014measureNames\030\004 \003(\t\022\026\n\016dimensionName" +
+      "s\030\005 \003(\t\022,\n\013occurrences\030\006 \003(\0132\027.export.bt",
+      ".BtOccurrence\022\025\n\rsystemProfile\030\007 \001(\t\"0\n\004" +
+      "Type\022\014\n\010PUREPATH\020\000\022\017\n\013USER_ACTION\020\001\022\t\n\005V" +
+      "ISIT\020\002\"\352\006\n\014BtOccurrence\022\021\n\tstartTime\030\001 \002" +
+      "(\003\022\017\n\007endTime\030\002 \001(\003\022\022\n\npurePathId\030\005 \001(\t\022" +
+      "\016\n\006values\030\006 \003(\001\022\022\n\ndimensions\030\007 \003(\t\022\022\n\na" +
+      "ctionName\030\010 \001(\t\022\013\n\003url\030\t \001(\t\022\r\n\005query\030\n " +
+      "\001(\t\022\017\n\007visitId\030\013 \001(\003\022\014\n\004user\030\014 \001(\t\022\r\n\005ap" +
+      "dex\030\r \001(\001\022\021\n\tconverted\030\016 \001(\010\022\024\n\014response" +
+      "Time\030\017 \001(\001\022\017\n\007cpuTime\030\020 \001(\001\022\020\n\010syncTime\030" +
+      "\021 \001(\001\022\020\n\010waitTime\030\022 \001(\001\022\026\n\016suspensionTim",
+      "e\030\023 \001(\001\022\020\n\010execTime\030\024 \001(\001\022\020\n\010duration\030\025 " +
+      "\001(\001\022\016\n\006failed\030\026 \001(\010\022\023\n\013nrOfActions\030\027 \001(\005" +
+      "\022\024\n\014clientFamily\030\030 \001(\t\022\020\n\010clientIP\030\031 \001(\t" +
+      "\022\021\n\tcontinent\030\032 \001(\t\022\017\n\007country\030\033 \001(\t\022\014\n\004" +
+      "city\030\034 \001(\t\022\025\n\rfailedActions\030\035 \001(\005\022\024\n\014cli" +
+      "entErrors\030\036 \001(\005\022\030\n\020exitActionFailed\030\037 \001(" +
+      "\010\022\016\n\006bounce\030  \001(\010\022\020\n\010osFamily\030! \001(\t\022\016\n\006o" +
+      "sName\030\" \001(\t\022\026\n\016connectionType\030# \001(\t\022\023\n\013c" +
+      "onvertedBy\030$ \003(\t\022\022\n\nclientTime\030% \001(\001\022\023\n\013" +
+      "networkTime\030& \001(\001\022\022\n\nserverTime\030\' \001(\001\022\032\n",
+      "\022urlRedirectionTime\030( \001(\005\022\017\n\007dnsTime\030) \001" +
+      "(\005\022\023\n\013connectTime\030* \001(\005\022\017\n\007sslTime\030+ \001(\005" +
+      "\022\033\n\023documentRequestTime\030, \001(\005\022\034\n\024documen" +
+      "tResponseTime\030- \001(\005\022\026\n\016processingTime\030. " +
+      "\001(\005B2\n.com.dynatrace.diagnostics.core.re" +
+      "altime.exportH\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5262,7 +5451,7 @@ public final class BtExport {
           internal_static_export_bt_BusinessTransactions_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_export_bt_BusinessTransactions_descriptor,
-              new java.lang.String[] { "BusinessTransactions", "LostTransactions", },
+              new java.lang.String[] { "BusinessTransactions", "LostTransactions", "ServerName", },
               com.dynatrace.diagnostics.core.realtime.export.BtExport.BusinessTransactions.class,
               com.dynatrace.diagnostics.core.realtime.export.BtExport.BusinessTransactions.Builder.class);
           internal_static_export_bt_BusinessTransaction_descriptor =
@@ -5270,7 +5459,7 @@ public final class BtExport {
           internal_static_export_bt_BusinessTransaction_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_export_bt_BusinessTransaction_descriptor,
-              new java.lang.String[] { "Name", "Type", "Application", "MeasureNames", "DimensionNames", "Occurrences", },
+              new java.lang.String[] { "Name", "Type", "Application", "MeasureNames", "DimensionNames", "Occurrences", "SystemProfile", },
               com.dynatrace.diagnostics.core.realtime.export.BtExport.BusinessTransaction.class,
               com.dynatrace.diagnostics.core.realtime.export.BtExport.BusinessTransaction.Builder.class);
           internal_static_export_bt_BtOccurrence_descriptor =
