@@ -13,7 +13,9 @@ create external table BT_PP (
     ExecTime DOUBLE,
     SuspensionTime DOUBLE,
     SyncTime DOUBLE,
-    WaitTime DOUBLE
+    WaitTime DOUBLE,
+    SystemProfile STRING,
+    ServerName STRING
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' ESCAPED BY '\\' COLLECTION ITEMS TERMINATED BY ',' MAP KEYS TERMINATED BY '='
 LOCATION '/user/bts/pp';
@@ -46,7 +48,9 @@ create external table BT_PA (
     SslTime INT,
     DocumentRequestTime INT,
     DocumentResponseTime INT,
-    ProcessingTime INT
+    ProcessingTime INT,
+    SystemProfile STRING,
+    ServerName STRING
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' ESCAPED BY '\\' COLLECTION ITEMS TERMINATED BY ',' MAP KEYS TERMINATED BY '='
 LOCATION '/user/bts/pa';
@@ -75,7 +79,9 @@ create external table BT_VISIT (
     OsFamily STRING,
     OsName STRING,
     ConnectionType STRING,
-    ConvertedBy ARRAY<STRING>	
+    ConvertedBy ARRAY<STRING>,
+    SystemProfile STRING,
+    ServerName STRING
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;' ESCAPED BY '\\' COLLECTION ITEMS TERMINATED BY ',' MAP KEYS TERMINATED BY '='
 LOCATION '/user/bts/visit';
