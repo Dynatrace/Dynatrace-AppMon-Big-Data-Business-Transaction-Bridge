@@ -109,13 +109,7 @@ public class BtExportJSONSerializer implements EventSerializer, Configurable {
 				jsonElement.addProperty("name", bt.getName());
 			if (bt.hasApplication())
 				jsonElement.addProperty("application", bt.getApplication());
-			if (bt.hasSystemProfile()) {
-				jsonElement.addProperty("systemProfile", bt.getSystemProfile());
-			}
-			String server = event.getHeaders().get(BtExportHandler.HEADER_KEY_SERVER);
-			if (server != null) {
-				jsonElement.addProperty("server", server);
-			}
+
 			if (bt.hasType())
 				jsonElement.addProperty("type", bt.getType().name());
 

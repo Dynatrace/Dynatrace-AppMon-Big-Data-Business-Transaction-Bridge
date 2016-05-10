@@ -105,44 +105,36 @@ public class BtExportJSONSerializer implements EventSerializer, Configurable {
 		for (BtOccurrence occurrence : bt.getOccurrencesList()) {
 			JsonObject jsonElement = new JsonObject();
 
-			if (bt.hasName()) {
+			if (bt.hasName())
 				jsonElement.addProperty("name", bt.getName());
-			}
-			if (bt.hasApplication()) {
+			if (bt.hasApplication())
 				jsonElement.addProperty("application", bt.getApplication());
-			}
-			if (bt.hasSystemProfile()) {
-				jsonElement.addProperty("systemProfile", bt.getSystemProfile());
-			}
-			String server = event.getHeaders().get(BtExportHandler.HEADER_KEY_SERVER);
-			if (server != null) {
-				jsonElement.addProperty("server", server);
-			}
-			
-			if (bt.hasType()) {
-				jsonElement.addProperty("type", bt.getType().name());
-			}
 
-			if (occurrence.hasPurePathId()) {
-				jsonElement.addProperty("purePathId", occurrence.getPurePathId());
-			}
+			if (bt.hasType())
+				jsonElement.addProperty("type", bt.getType().name());
+
+			if (occurrence.hasPurePathId())
+				jsonElement.addProperty("purePathId",
+						occurrence.getPurePathId());
 
 			if (occurrence.hasStartTime()) {
-				jsonElement.addProperty("startTime", dateFormat.format(new Date(occurrence.getStartTime())));
+				jsonElement.addProperty("startTime",
+						dateFormat.format(new Date(occurrence.getStartTime())));
 			}
 
-			if (occurrence.hasEndTime()) {
-				jsonElement.addProperty("endTime", dateFormat.format(new Date(occurrence.getEndTime())));
-			}
+			if (occurrence.hasEndTime())
+				jsonElement.addProperty("endTime",
+						dateFormat.format(new Date(occurrence.getEndTime())));
 
 			final int nrOfSplittings = bt.getDimensionNamesCount();
 			if (nrOfSplittings > 0) {
 				final JsonObject dimensions = new JsonObject();
 				// safety net, in case the number of dimensions changed in between
 				final int realSize = occurrence.getDimensionsCount();
-				for (int i = 0; i < nrOfSplittings && i < realSize ; i++) {
-					dimensions.addProperty(bt.getDimensionNames(i),	occurrence.getDimensions(i));
-				}
+				for (int i = 0; i < nrOfSplittings && i < realSize ; i++)
+					dimensions.addProperty(bt.getDimensionNames(i),
+							occurrence.getDimensions(i));
+
 				jsonElement.add("dimensions", dimensions);
 			}
 			
@@ -151,9 +143,9 @@ public class BtExportJSONSerializer implements EventSerializer, Configurable {
 				final JsonObject measures = new JsonObject();
 				// safety net, in case the number of measures changed in between
 				final int realSize = occurrence.getValuesCount();
-				for (int i = 0; i < nrOfMeasures && i < realSize; i++) {
-					measures.addProperty(bt.getMeasureNames(i),	occurrence.getValues(i));
-				}
+				for (int i = 0; i < nrOfMeasures && i < realSize; i++)
+					measures.addProperty(bt.getMeasureNames(i),
+							occurrence.getValues(i));
 
 				jsonElement.add("measures", measures);
 			}
@@ -166,32 +158,28 @@ public class BtExportJSONSerializer implements EventSerializer, Configurable {
 				jsonElement.addProperty("visitId", occurrence.getVisitId());
 			}
 
-			if (occurrence.hasActionName()) {
-				jsonElement.addProperty("actionName", occurrence.getActionName());
-			}
+			if (occurrence.hasActionName())
+				jsonElement.addProperty("actionName",
+						occurrence.getActionName());
 
-			if (occurrence.hasApdex()) {
+			if (occurrence.hasApdex())
 				jsonElement.addProperty("apdex", occurrence.getApdex());
-			}
 
-			if (occurrence.hasConverted()) {
+			if (occurrence.hasConverted())
 				jsonElement.addProperty("converted", occurrence.getConverted());
-			}
 
-			if (occurrence.hasQuery()) {
+			if (occurrence.hasQuery())
 				jsonElement.addProperty("query", occurrence.getQuery());
-			}
 
-			if (occurrence.hasUrl()) {
+			if (occurrence.hasUrl())
 				jsonElement.addProperty("url", occurrence.getUrl());
-			}
 
-			if (occurrence.hasUser()) {
+			if (occurrence.hasUser())
 				jsonElement.addProperty("user", occurrence.getUser());
-			}
 
 			if (occurrence.hasResponseTime()) {
-				jsonElement.addProperty("responseTime", occurrence.getResponseTime());
+				jsonElement.addProperty("responseTime",
+						occurrence.getResponseTime());
 			}
 			if (occurrence.hasDuration()) {
 				jsonElement.addProperty("duration", occurrence.getDuration());
@@ -206,7 +194,8 @@ public class BtExportJSONSerializer implements EventSerializer, Configurable {
 			}
 
 			if (occurrence.hasSuspensionTime()) {
-				jsonElement.addProperty("suspensionTime", occurrence.getSuspensionTime());
+				jsonElement.addProperty("suspensionTime",
+						occurrence.getSuspensionTime());
 			}
 
 			if (occurrence.hasSyncTime()) {
@@ -216,6 +205,8 @@ public class BtExportJSONSerializer implements EventSerializer, Configurable {
 			if (occurrence.hasWaitTime()) {
 				jsonElement.addProperty("waitTime", occurrence.getWaitTime());
 			}
+			
+			
 			
 			if (occurrence.hasNrOfActions()) {
 				jsonElement.addProperty("nrOfActions", occurrence.getNrOfActions());

@@ -24,7 +24,6 @@ public class BtPurePathSerializerTest extends BtSerializerTestBase {
 		bt.setName("btName").setApplication("btApplication").setType(BusinessTransaction.Type.PUREPATH);
 		bt.addAllDimensionNames(Arrays.asList(new String[] {"splittingKey"}));
 		bt.addAllMeasureNames(Arrays.asList(new String[] {"measureKey"}));
-		bt.setSystemProfile("sp");
 		
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setPurePathId("PT=288;PA=-508867027;PS=-522660323");
@@ -38,7 +37,7 @@ public class BtPurePathSerializerTest extends BtSerializerTestBase {
 		
 			
 		assertEquals("btName;btApplication;PT\\=288\\;PA\\=-508867027\\;PS\\=-522660323;2013-01-16 11:05:57.84;splittingKey=splitting;" +
-				"measureKey=1.0;true;1234;10.0;9.0;8.0;7.0;6.0;5.0;4.0;sp;srv\n", buildAndSerializeToString(bt, occurrence, "srv"));
+				"measureKey=1.0;true;1234;10.0;9.0;8.0;7.0;6.0;5.0;4.0\n", buildAndSerializeToString(bt, occurrence));
 	}
 	
 	
@@ -51,7 +50,6 @@ public class BtPurePathSerializerTest extends BtSerializerTestBase {
 		
 		BusinessTransaction.Builder bt = BusinessTransaction.newBuilder();
 		bt.setName("btName").setApplication("btApplication").setType(BusinessTransaction.Type.PUREPATH);
-		bt.setSystemProfile("sp");
 		bt.addAllDimensionNames(Arrays.asList(new String[] {"splittingKey1", "splittingKey2"}));
 		bt.addAllMeasureNames(Arrays.asList(new String[] {"measureKey1", "measureKey2"}));
 		
@@ -66,7 +64,7 @@ public class BtPurePathSerializerTest extends BtSerializerTestBase {
 				.setExecTime(7.0).setSuspensionTime(6.0).setSyncTime(5.0).setWaitTime(4.0);
 		
 		assertEquals("btName;btApplication;PT\\=288\\;PA\\=-508867027\\;PS\\=-522660323;2013-01-16 11:05:57.84;splittingKey1=splitting1,splittingKey2=splitting2;" +
-				"measureKey1=1.0,measureKey2=2.0;false;1234;10.0;9.0;8.0;7.0;6.0;5.0;4.0;sp;srv\n", buildAndSerializeToString(bt, occurrence, "srv"));
+				"measureKey1=1.0,measureKey2=2.0;false;1234;10.0;9.0;8.0;7.0;6.0;5.0;4.0\n", buildAndSerializeToString(bt, occurrence));
 	}
 	
 	
@@ -83,7 +81,7 @@ public class BtPurePathSerializerTest extends BtSerializerTestBase {
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setStartTime(1358330757840L);
 		
-		assertEquals("btName;;;2013-01-16 11:05:57.84;;;;;;;;;;;;;\n", buildAndSerializeToString(bt, occurrence, null));
+		assertEquals("btName;;;2013-01-16 11:05:57.84;;;;;;;;;;;\n", buildAndSerializeToString(bt, occurrence));
 	}
 	
 	
@@ -100,7 +98,7 @@ public class BtPurePathSerializerTest extends BtSerializerTestBase {
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setStartTime(1358330757840L);
 			
-		assertTrue(buildAndSerializeToString(bt, occurrence, "srv").isEmpty());
+		assertTrue(buildAndSerializeToString(bt, occurrence).isEmpty());
 	}
 	
 	
@@ -117,7 +115,7 @@ public class BtPurePathSerializerTest extends BtSerializerTestBase {
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setStartTime(1358330757840L);
 			
-		assertTrue(buildAndSerializeToString(bt, occurrence, "srv").isEmpty());
+		assertTrue(buildAndSerializeToString(bt, occurrence).isEmpty());
 	}
 
 	

@@ -39,7 +39,7 @@ public class BtPageActionSerializer extends BtSerializer {
 			log.warn("Skipping serialization of event without type: btName='" + bt.getName() + "'");
 			return;
 		}
-		if (bt.getType() != BusinessTransaction.Type.USER_ACTION) {
+		if (bt.getType() != BusinessTransaction.Type.PAGE_ACTION) {
 			log.warn("Skipping serialization of event of wrong type: '" + bt.getType() + "', btName: '" + bt.getName() + "'");
 			return;
 		}
@@ -171,15 +171,6 @@ public class BtPageActionSerializer extends BtSerializer {
 			sb.append(FIELD_DELIMITER);
 			if (occurrence.hasProcessingTime()) {
 				sb.append(occurrence.getProcessingTime());
-			}
-			sb.append(FIELD_DELIMITER);
-			if (bt.hasSystemProfile()) {
-				sb.append(bt.getSystemProfile());
-			}
-			sb.append(FIELD_DELIMITER);
-			String server = event.getHeaders().get(BtExportHandler.HEADER_KEY_SERVER);
-			if (server != null) {
-				sb.append(server);
 			}
 			sb.append(LINE_DELIMITER);
 			write(sb.toString());

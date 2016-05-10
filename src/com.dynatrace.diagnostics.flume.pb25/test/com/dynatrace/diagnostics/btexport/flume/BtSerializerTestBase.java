@@ -22,8 +22,8 @@ public abstract class BtSerializerTestBase {
 	 * @return
 	 * @throws IOException
 	 */
-	protected String buildAndSerializeToString(BusinessTransaction.Builder bt, BtOccurrence.Builder occurrence, String serverName) throws IOException {
-		return new String(buildAndSerialize(bt, occurrence, null, serverName));
+	protected String buildAndSerializeToString(BusinessTransaction.Builder bt, BtOccurrence.Builder occurrence) throws IOException {
+		return new String(buildAndSerialize(bt, occurrence, null));
 	}
 
 
@@ -36,13 +36,10 @@ public abstract class BtSerializerTestBase {
 	 * @return
 	 * @throws IOException
 	 */
-	protected byte[] buildAndSerialize(BusinessTransaction.Builder bt, BtOccurrence.Builder occurrence, String charsetName, String serverName) throws IOException {
+	protected byte[] buildAndSerialize(BusinessTransaction.Builder bt, BtOccurrence.Builder occurrence, String charsetName) throws IOException {
 		bt.addOccurrences(occurrence);
 		
 		Event event = EventBuilder.withBody(bt.build().toByteArray());
-		if (serverName != null) {
-			event.getHeaders().put(BtExportHandler.HEADER_KEY_SERVER, serverName);
-		}
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		

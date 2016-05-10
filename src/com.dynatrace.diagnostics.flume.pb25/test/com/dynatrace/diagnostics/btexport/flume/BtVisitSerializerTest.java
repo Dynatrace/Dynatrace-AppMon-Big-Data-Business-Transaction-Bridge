@@ -47,11 +47,9 @@ public class BtVisitSerializerTest extends BtSerializerTestBase {
 		occurrence.addAllConvertedBy(Arrays.asList(new String[]{"conv", "by"}));
 		
 		occurrence.setUser("btUser").setConverted(true).setApdex(0.75);
-		
-		bt.setSystemProfile("sp");
 				
 		assertEquals("btName;btApplication;8589934592;2013-01-16 11:05:57.84;2013-01-16 11:07:12.472;splittingKey=splitting;" +
-				"measureKey=1.0;btUser;true;0.75;322;cfam;1.2.3.4;Europe;Austria;Linz;2;5;true;false;ofam;onam;conty;conv,by;sp;srv\n", buildAndSerializeToString(bt, occurrence, "srv"));
+				"measureKey=1.0;btUser;true;0.75;322;cfam;1.2.3.4;Europe;Austria;Linz;2;5;true;false;ofam;onam;conty;conv,by\n", buildAndSerializeToString(bt, occurrence));
 	}
 	
 	
@@ -76,7 +74,7 @@ public class BtVisitSerializerTest extends BtSerializerTestBase {
 		occurrence.setUser("btUser").setConverted(false).setApdex(0.75);
 		
 		assertEquals("btName;btApplication;8589934592;2013-01-16 11:05:57.84;2013-01-16 11:07:12.472;splittingKey1=splitting1,splittingKey2=splitting2;" +
-				"measureKey1=1.0,measureKey2=2.0;btUser;false;0.75;;;;;;;;;;;;;;;;srv\n", buildAndSerializeToString(bt, occurrence, "srv"));
+				"measureKey1=1.0,measureKey2=2.0;btUser;false;0.75;;;;;;;;;;;;;;\n", buildAndSerializeToString(bt, occurrence));
 	}
 	
 	
@@ -93,7 +91,7 @@ public class BtVisitSerializerTest extends BtSerializerTestBase {
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setStartTime(1358330757840L);
 		
-		assertEquals("btName;;;2013-01-16 11:05:57.84;;;;;;;;;;;;;;;;;;;;;;\n", buildAndSerializeToString(bt, occurrence, null));
+		assertEquals("btName;;;2013-01-16 11:05:57.84;;;;;;;;;;;;;;;;;;;;\n", buildAndSerializeToString(bt, occurrence));
 	}
 	
 	
@@ -110,7 +108,7 @@ public class BtVisitSerializerTest extends BtSerializerTestBase {
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setStartTime(1358330757840L);
 		
-		assertTrue(buildAndSerializeToString(bt, occurrence, "srv").isEmpty());
+		assertTrue(buildAndSerializeToString(bt, occurrence).isEmpty());
 	}
 	
 	
@@ -127,7 +125,7 @@ public class BtVisitSerializerTest extends BtSerializerTestBase {
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setStartTime(1358330757840L);
 		
-		assertTrue(buildAndSerializeToString(bt, occurrence, "srv").isEmpty());
+		assertTrue(buildAndSerializeToString(bt, occurrence).isEmpty());
 	}
 	
 

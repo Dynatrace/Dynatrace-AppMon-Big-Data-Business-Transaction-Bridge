@@ -34,7 +34,7 @@
 	
 	<target name="build"  depends="init">
 		<delete dir="${dir.build}" />
-		<delete file="dtFlume_1.1.1.jar" />
+		<delete file="dtFlume_1.1.jar" />
 		<mkdir dir="${dir.build}" />
 	
 		<javac deprecation="no" nowarn="false" srcdir="${dir.src}" destdir="${dir.build}">
@@ -43,7 +43,7 @@
 			</classpath>
 		</javac>
 		
-		<jar jarfile="dtFlume_1.1.1.jar">
+		<jar jarfile="dtFlume_1.1.jar">
 			<fileset dir="${dir.build}">
 				<include name="**" />
 			</fileset>

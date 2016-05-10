@@ -22,10 +22,9 @@ public class BtPageActionSerializerTest extends BtSerializerTestBase {
 	public void testFullSerialization1ElemMaps() throws IOException {
 		
 		BusinessTransaction.Builder bt = BusinessTransaction.newBuilder();
-		bt.setName("btName").setApplication("btApplication").setType(BusinessTransaction.Type.USER_ACTION);
+		bt.setName("btName").setApplication("btApplication").setType(BusinessTransaction.Type.PAGE_ACTION);
 		bt.addAllDimensionNames(Arrays.asList(new String[] {"splittingKey"}));
 		bt.addAllMeasureNames(Arrays.asList(new String[] {"measureKey"}));
-		bt.setSystemProfile("sp");
 		
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setPurePathId("PT=288;PA=-508867027;PS=-522660323");
@@ -51,7 +50,7 @@ public class BtPageActionSerializerTest extends BtSerializerTestBase {
 		
 		assertEquals("btName;btApplication;PT\\=288\\;PA\\=-508867027\\;PS\\=-522660323;2013-01-16 11:05:57.84;splittingKey=splitting;" +
 				"measureKey=1.0;false;btActionName;http://someurl.com;8589934592;10.0;9.0;8.0;7.0;6.0;5.0;4.0;10;11.0;12.0;13.0;14;" +
-				"15;16;17;18;19;20;sp;srv\n", buildAndSerializeToString(bt, occurrence, "srv"));
+				"15;16;17;18;19;20\n", buildAndSerializeToString(bt, occurrence));
 	}
 	
 	
@@ -63,10 +62,9 @@ public class BtPageActionSerializerTest extends BtSerializerTestBase {
 	public void testFullSerialization2ElemMaps() throws IOException {
 		
 		BusinessTransaction.Builder bt = BusinessTransaction.newBuilder();
-		bt.setName("btName").setApplication("btApplication").setType(BusinessTransaction.Type.USER_ACTION);
+		bt.setName("btName").setApplication("btApplication").setType(BusinessTransaction.Type.PAGE_ACTION);
 		bt.addAllDimensionNames(Arrays.asList(new String[] {"splittingKey1", "splittingKey2"}));
 		bt.addAllMeasureNames(Arrays.asList(new String[] {"measureKey1", "measureKey2"}));
-		bt.setSystemProfile("sp");
 		
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setPurePathId("PT=288;PA=-508867027;PS=-522660323");
@@ -92,7 +90,7 @@ public class BtPageActionSerializerTest extends BtSerializerTestBase {
 		
 		assertEquals("btName;btApplication;PT\\=288\\;PA\\=-508867027\\;PS\\=-522660323;2013-01-16 11:05:57.84;splittingKey1=splitting1,splittingKey2=splitting2;" +
 				"measureKey1=1.0,measureKey2=2.0;false;btActionName;http://someurl.com;8589934592;10.0;9.0;8.0;7.0;6.0;5.0;4.0;10;11.0;12.0;13.0;14;" +
-				"15;16;17;18;19;20;sp;srv\n", buildAndSerializeToString(bt, occurrence, "srv"));
+				"15;16;17;18;19;20\n", buildAndSerializeToString(bt, occurrence));
 	}
 	
 	
@@ -104,12 +102,12 @@ public class BtPageActionSerializerTest extends BtSerializerTestBase {
 	public void testMinimalSerialization() throws IOException {
 		
 		BusinessTransaction.Builder bt = BusinessTransaction.newBuilder();
-		bt.setName("btName").setType(BusinessTransaction.Type.USER_ACTION);
+		bt.setName("btName").setType(BusinessTransaction.Type.PAGE_ACTION);
 		
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setStartTime(1358330757840L);
 		
-		assertEquals("btName;;;2013-01-16 11:05:57.84;;;;;;;;;;;;;;;;;;;;;;;;;;\n", buildAndSerializeToString(bt, occurrence, null));
+		assertEquals("btName;;;2013-01-16 11:05:57.84;;;;;;;;;;;;;;;;;;;;;;;;\n", buildAndSerializeToString(bt, occurrence));
 	}
 	
 	
@@ -126,7 +124,7 @@ public class BtPageActionSerializerTest extends BtSerializerTestBase {
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setStartTime(1358330757840L);
 		
-		assertTrue(buildAndSerializeToString(bt, occurrence, "srv").isEmpty());
+		assertTrue(buildAndSerializeToString(bt, occurrence).isEmpty());
 	}
 	
 	
@@ -143,7 +141,7 @@ public class BtPageActionSerializerTest extends BtSerializerTestBase {
 		BtOccurrence.Builder occurrence = BtOccurrence.newBuilder();
 		occurrence.setStartTime(1358330757840L);
 		
-		assertTrue(buildAndSerializeToString(bt, occurrence, "srv").isEmpty());
+		assertTrue(buildAndSerializeToString(bt, occurrence).isEmpty());
 	}
 
 	
