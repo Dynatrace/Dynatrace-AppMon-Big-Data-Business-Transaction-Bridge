@@ -118,6 +118,15 @@ public class BtPurePathSerializer extends BtSerializer {
 			if (occurrence.hasWaitTime()) {
 				sb.append(occurrence.getWaitTime());
 			}
+			sb.append(FIELD_DELIMITER);
+			if (bt.hasSystemProfile()) {
+				sb.append(bt.getSystemProfile());
+			}
+			sb.append(FIELD_DELIMITER);
+			String server = event.getHeaders().get(BtExportHandler.HEADER_KEY_SERVER);
+			if (server != null) {
+				sb.append(server);
+			}
 			sb.append(LINE_DELIMITER);
 			write(sb.toString());
 		}

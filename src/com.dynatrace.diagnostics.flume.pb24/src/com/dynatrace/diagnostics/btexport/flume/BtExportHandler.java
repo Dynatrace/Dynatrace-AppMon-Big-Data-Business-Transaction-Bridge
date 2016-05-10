@@ -27,6 +27,8 @@ public class BtExportHandler implements HTTPSourceHandler {
 	
 	public static final String HEADER_KEY_BT_TYPE = "btType";
 	public static final String HEADER_KEY_BT_NAME = "btName";
+	public static final String HEADER_KEY_SYSTEM_PROFILE = "systemProfile";
+	public static final String HEADER_KEY_SERVER = "server";
 	
 	/**
 	 * Does nothing.
@@ -63,6 +65,12 @@ public class BtExportHandler implements HTTPSourceHandler {
 				Map<String, String> headers = new TreeMap<String, String>();
 				headers.put(HEADER_KEY_BT_TYPE, bt.getType().name());
 				headers.put(HEADER_KEY_BT_NAME, bt.getName());
+				if (bt.hasSystemProfile()) {
+					headers.put(HEADER_KEY_SYSTEM_PROFILE, bt.getSystemProfile());
+				}
+				if (bts.hasServerName()) {
+					headers.put(HEADER_KEY_SERVER, bts.getServerName());
+				}
 				event.setHeaders(headers);
 				events.add(event);
 			}
