@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="dynaTrace Flume Testdata-Generator" default="build">
+	
+	<description>
+		...
+	</description>
+	
+	<property name="dir.src" value="./src" />
+	<property name="dir.lib" value="./lib" />
+	<property name="dir.build" value="./build/ant" />
+	
+	<target name="build">
+		<delete dir="${dir.build}" />
+		<delete file="flume.testdata.jar" />
+		<mkdir dir="${dir.build}" />
+		
+		<javac deprecation="no" nowarn="false" srcdir="${dir.src}" destdir="${dir.build}" classpath="${dir.lib}/protobuf-2.4.1.jar" />
+		
+		<unjar src="${dir.lib}/protobuf-2.4.1.jar" dest="${dir.build}" />
+		
+		<jar jarfile="flume.testdata.jar">
+			<manifest>
+				<attribute name="Main-Class" value="com.dynatrace.diagnostics.flume.testdata.TestDataUI" />
+			</manifest>
+			<fileset dir="${dir.build}">
+				<include name="**" />
+			</fileset>
+			<fileset dir="${dir.src}">
+				<include name="**/*.java" />
+			</fileset>
+		 	
+		</jar>
+	</target>
+	
+</project>

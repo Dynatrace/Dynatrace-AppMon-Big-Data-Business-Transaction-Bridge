@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="dynaTrace BT Export for Flume 1.6.0/Protobuf 2.5.0" default="build">
+	
+	<description>
+		...
+	</description>
+	
+	<property name="dir.src" value="./src" />
+	<property name="dir.test" value="./test" />
+	<property name="dir.report" value="./report" />
+	<property name="dir.build" value="./build/ant" />
+	<property name="dir.metainf" value="./META-INF" />
+	
+	<path id="path.lib">
+		<fileset dir="./lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="path.junit">
+		<fileset dir="./lib-test">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="${dir.build}" failonerror="no" />
+		<delete dir="${dir.report}" failonerror="no" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${dir.report}" />
+	</target>
+	
+	<target name="build"  depends="init">
+		<delete dir="${dir.build}" />
+		<delete file="dtFlume_1.1.jar" />
+		<mkdir dir="${dir.build}" />
+	
+		<javac deprecation="no" nowarn="false" srcdir="${dir.src}" destdir="${dir.build}">
+			<classpath>
+				<path refid="path.lib" />
+			</classpath>
+		</javac>
+		
+		<jar jarfile="dtFlume_1.1.jar">
+			<fileset dir="${dir.build}">
+				<include name="**" />
+			</fileset>
+			<fileset dir="${dir.src}">
+				<include name="**/*.java" />
+			</fileset>
+			<metainf dir="${dir.metainf}" includes="**/LICENSE" />
+		</jar>
+	</target>
+	
+	
+	<target name="test" depends="build">
+		<javac deprecation="no" nowarn="false" srcdir="${dir.test}" destdir="${dir.build}">
+			<classpath>
+				<path refid="path.lib" />
+				<path refid="path.junit" />
+			</classpath>
+		</javac> 
+		
+		<junit fork="no">
+			
+			<classpath>
+				<pathelement location="${dir.src}" />
+				<pathelement location="${dir.test}" />
+				<pathelement location="${dir.build}" />
+				<path refid="path.junit" />
+				<path refid="path.lib" />
+			</classpath>
+			<formatter type="xml"/>
+			<batchtest todir="${dir.report}">
+				<fileset dir="./test" includes="**/*Test.java" />
+			</batchtest>			
+		</junit>
+		
+	</target>
+	
+</project>
