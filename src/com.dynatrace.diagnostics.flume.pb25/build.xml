@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="dynaTrace BT Export for Flume 1.6.0/Protobuf 2.5.0" default="build">
+<project name="dynaTrace BT Export for Flume 1.7.0/Protobuf 2.5.0" default="build">
 	
 	<description>
 		...
@@ -35,15 +35,16 @@
 	<target name="build"  depends="init">
 		<delete dir="${dir.build}" />
 		<delete file="dtFlume_1.1.1.jar" />
+		<delete file="dtFlume_1.2.0.jar" />
 		<mkdir dir="${dir.build}" />
 	
-		<javac deprecation="no" nowarn="false" srcdir="${dir.src}" destdir="${dir.build}">
+		<javac deprecation="no" nowarn="false" srcdir="${dir.src}" destdir="${dir.build}" debug="true">
 			<classpath>
 				<path refid="path.lib" />
 			</classpath>
 		</javac>
 		
-		<jar jarfile="dtFlume_1.1.1.jar">
+		<jar jarfile="dtFlume_1.2.0.jar">
 			<fileset dir="${dir.build}">
 				<include name="**" />
 			</fileset>

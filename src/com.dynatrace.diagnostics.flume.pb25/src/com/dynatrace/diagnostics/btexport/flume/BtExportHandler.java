@@ -47,7 +47,7 @@ public class BtExportHandler implements HTTPSourceHandler {
 	@Override
 	public List<Event> getEvents(HttpServletRequest request) throws HTTPBadRequestException, IOException  {
 		int length = request.getContentLength();
-		byte[] data = new byte[length];
+		byte[] data = new byte[Math.max(0, length)];
 		int read = 0;
 		int total = 0;
 		while (read >= 0 && total < length) {
